@@ -132,6 +132,22 @@
   .close-admin:hover { border-color:rgba(255,255,255,0.5); color:#fff; }
 
   @media(max-width:600px){ .wish-letter{padding:40px 25px} .story-entry{grid-template-columns:1fr} .admin-box{padding:25px} .sl-prev{left:-12px} .sl-next{right:-12px} }
+  @media (max-width:768px){
+  .cursor{
+    display:none;
+  }
+
+  body{
+    cursor:auto;
+  }
+}
+
+.slide img{
+  will-change: transform;
+}
+.slide img{
+  will-change: transform;
+}
 </style>
 </head>
 <body>
@@ -272,29 +288,29 @@ let siteData = {
     
   ],
   photos: [
- { url: "https://i.ibb.co/k6qfW7X2/Messenger-creation-910158fa-3f1f-490e-846f-647a3592dfa7.jpg", caption: "আমাদের ঘুরার সেই একই জায়গাটা " },
-     { url: "https://i.ibb.co/SXmMWg0q/IMG-20221226-094117.jpg", caption: "শীতের ভোরে হাটতে জাওয়া জান মনে আছে.☺️" },
-     { url: "https://i.ibb.co/j7y3tNN/IMG-20250531-204823.jpg", caption: "তোমায় নিয়ে ঠিক মতো ঘুরাই হয় নাই 😔" },
-     { url: "https://i.ibb.co/rGQ8M1Rb/received-968839360765883.jpg", caption: "আমাদের সেই এক সরকারি কলেজের পুকুর ঘাট 😉" },
-     { url: "https://i.ibb.co/D6g6hx6/IMG-20250930-140257.jpg", caption: "আহহ কত কাছে ছিলা কত সুন্দর করে তাকাই 😇" },
-     { url: "https://i.ibb.co/23NvKGRL/IMG-20240704-WA0030.jpg", caption: "আমাদের সেই দিন গুলো কলিজা🫠" },
-     { url: "https://i.ibb.co/5xLZ7xtn/received-906120040352802.jpg", caption: "কলেজ শেষে তোমায় নিয়ে ঘুরতাম, ঢাকা থেকে এসে ☺️..." },
-     { url: "https://i.ibb.co/FLhKgZ6d/IMG-20221231-083530.jpg", caption: "আমাদের সেরা মুহুর্তের ছবি বউ🫠" },
-     { url: "https://i.ibb.co/sd0K4QTN/IMG-20230223-152648.jpg", caption: "তখন কত ছোট ছিলাম বউ, তুমি কত সুন্দর 🥺" },
-     { url: "https://i.ibb.co/5xnTdzdf/IMG20251221135501.jpg", caption: "শেষ ঘুরাঘুরি করছিলাম এইবার শীতে 😭" },
-     { url: "https://i.ibb.co/VWX8pFhW/IMG20260325191649.jpg", caption: "এখন আমাদের আল্লাহর দেয়া অনেক কিছুই আছে গো বউ🫀" },
+//  { url: "https://i.ibb.co/k6qfW7X2/Messenger-creation-910158fa-3f1f-490e-846f-647a3592dfa7.jpg", caption: "আমাদের ঘুরার সেই একই জায়গাটা " },
+//      { url: "https://i.ibb.co/SXmMWg0q/IMG-20221226-094117.jpg", caption: "শীতের ভোরে হাটতে জাওয়া জান মনে আছে.☺️" },
+//      { url: "https://i.ibb.co/j7y3tNN/IMG-20250531-204823.jpg", caption: "তোমায় নিয়ে ঠিক মতো ঘুরাই হয় নাই 😔" },
+//      { url: "https://i.ibb.co/rGQ8M1Rb/received-968839360765883.jpg", caption: "আমাদের সেই এক সরকারি কলেজের পুকুর ঘাট 😉" },
+//      { url: "https://i.ibb.co/D6g6hx6/IMG-20250930-140257.jpg", caption: "আহহ কত কাছে ছিলা কত সুন্দর করে তাকাই 😇" },
+//      { url: "https://i.ibb.co/23NvKGRL/IMG-20240704-WA0030.jpg", caption: "আমাদের সেই দিন গুলো কলিজা🫠" },
+//      { url: "https://i.ibb.co/5xLZ7xtn/received-906120040352802.jpg", caption: "কলেজ শেষে তোমায় নিয়ে ঘুরতাম, ঢাকা থেকে এসে ☺️..." },
+//      { url: "https://i.ibb.co/FLhKgZ6d/IMG-20221231-083530.jpg", caption: "আমাদের সেরা মুহুর্তের ছবি বউ🫠" },
+//      { url: "https://i.ibb.co/sd0K4QTN/IMG-20230223-152648.jpg", caption: "তখন কত ছোট ছিলাম বউ, তুমি কত সুন্দর 🥺" },
+//      { url: "https://i.ibb.co/5xnTdzdf/IMG20251221135501.jpg", caption: "শেষ ঘুরাঘুরি করছিলাম এইবার শীতে 😭" },
+//      { url: "https://i.ibb.co/VWX8pFhW/IMG20260325191649.jpg", caption: "এখন আমাদের আল্লাহর দেয়া অনেক কিছুই আছে গো বউ🫀" },
 
-     { url: "https://i.imgur.com/5aB3jaF.jpeg", caption: "আমাদের ঘুরার সেই একই জায়গাটা " },
-     {url: "https://i.imgur.com/EyYb4AF.jpeg", caption: "শীতের ভোরে হাটতে জাওয়া জান মনে আছে.☺️" },
-     { url: "https://i.imgur.com/3i10LTw.jpeg", caption: "তোমায় নিয়ে ঠিক মতো ঘুরাই হয় নাই 😔" },
-     { url: "https://i.imgur.com/8iX28zI.jpeg", caption: "আমাদের সেই এক সরকারি কলেজের পুকুর ঘাট 😉" },
-     { url: "https://i.imgur.com/i5mUQZq.jpeg", caption: "আহহ কত কাছে ছিলা কত সুন্দর করে তাকাই 😇" },
-     { url: "https://i.imgur.com/Yn2QgmC.jpeg", caption: "আমাদের সেই দিন গুলো কলিজা🫠" },
-     { url: "https://i.imgur.com/Nizzu42.jpeg", caption: "কলেজ শেষে তোমায় নিয়ে ঘুরতাম, ঢাকা থেকে এসে ☺️..." },
-     { url: "https://i.imgur.com/7igcjWN.jpeg", caption: "আমাদের সেরা মুহুর্তের ছবি বউ🫠" },
-     { url: "https://i.imgur.com/fYyCg0h.jpeg", caption: "তখন কত ছোট ছিলাম বউ, তুমি কত সুন্দর 🥺" },
-     { url: "https://i.imgur.com/5gLnHJ9.jpeg", caption: "শেষ ঘুরাঘুরি করছিলাম এইবার শীতে 😭" },
-     { url: "https://i.imgur.com/X6KTG7W.jpeg", caption: "এখন আমাদের আল্লাহর দেয়া অনেক কিছুই আছে গো বউ🫀" },
+//      { url: "https://i.imgur.com/5aB3jaF.jpeg", caption: "আমাদের ঘুরার সেই একই জায়গাটা " },
+//      {url: "https://i.imgur.com/EyYb4AF.jpeg", caption: "শীতের ভোরে হাটতে জাওয়া জান মনে আছে.☺️" },
+//      { url: "https://i.imgur.com/3i10LTw.jpeg", caption: "তোমায় নিয়ে ঠিক মতো ঘুরাই হয় নাই 😔" },
+//      { url: "https://i.imgur.com/8iX28zI.jpeg", caption: "আমাদের সেই এক সরকারি কলেজের পুকুর ঘাট 😉" },
+//      { url: "https://i.imgur.com/i5mUQZq.jpeg", caption: "আহহ কত কাছে ছিলা কত সুন্দর করে তাকাই 😇" },
+//      { url: "https://i.imgur.com/Yn2QgmC.jpeg", caption: "আমাদের সেই দিন গুলো কলিজা🫠" },
+//      { url: "https://i.imgur.com/Nizzu42.jpeg", caption: "কলেজ শেষে তোমায় নিয়ে ঘুরতাম, ঢাকা থেকে এসে ☺️..." },
+//      { url: "https://i.imgur.com/7igcjWN.jpeg", caption: "আমাদের সেরা মুহুর্তের ছবি বউ🫠" },
+//      { url: "https://i.imgur.com/fYyCg0h.jpeg", caption: "তখন কত ছোট ছিলাম বউ, তুমি কত সুন্দর 🥺" },
+//      { url: "https://i.imgur.com/5gLnHJ9.jpeg", caption: "শেষ ঘুরাঘুরি করছিলাম এইবার শীতে 😭" },
+//      { url: "https://i.imgur.com/X6KTG7W.jpeg", caption: "এখন আমাদের আল্লাহর দেয়া অনেক কিছুই আছে গো বউ🫀" },
 
      { url: "https://raw.githubusercontent.com/turab-e1414/birthday-site/main/Messenger_creation_910158fa-3f1f-490e-846f-647a3592dfa7.jpeg", caption: "আমাদের ঘুরার সেই একই জায়গাটা " },
      {url: "https://raw.githubusercontent.com/turab-e1414/birthday-site/main/IMG_20221226_094117.jpg", caption: "শীতের ভোরে হাটতে জাওয়া জান মনে আছে.☺️" },
@@ -541,61 +557,49 @@ function addPhotoEntry(p={}) {
     <input type="hidden" class="photo-data" value="${p.url||""}">`;
   pa.appendChild(div);
 }
-async function applyAdmin() {
+function applyAdmin() {
 
-  siteData.name       = document.getElementById("adm-name").value.trim() || "HAPPY BIRTHDAY Bow";
-  siteData.sign       = document.getElementById("adm-sign").value.trim();
-  siteData.sub        = document.getElementById("adm-sub").value.trim();
-  siteData.wish       = document.getElementById("adm-wish").value.trim();
-  siteData.musicUrl   = document.getElementById("adm-music").value.trim();
-  siteData.musicLabel = document.getElementById("adm-music-label").value.trim() || "♪ আমাদের গান";
+  siteData.name = document.getElementById("adm-name").value.trim();
+  siteData.sign = document.getElementById("adm-sign").value.trim();
+  siteData.sub = document.getElementById("adm-sub").value.trim();
+  siteData.wish = document.getElementById("adm-wish").value.trim();
 
-  siteData.stories = [...document.getElementById("story-admin").querySelectorAll(".story-entry")].map(el => {
-    const ins = el.querySelectorAll("input");
+  siteData.stories = [...document.getElementById("story-admin")
+    .querySelectorAll(".story-entry")]
+    .map(el => {
 
-    return {
-      date: ins[0].value,
-      icon: ins[1].value,
-      title: ins[2].value,
-      desc: el.querySelector("textarea").value
-    };
+      const ins = el.querySelectorAll("input");
 
-  }).filter(s => s.title);
+      return {
+        date: ins[0].value,
+        icon: ins[1].value,
+        title: ins[2].value,
+        desc: el.querySelector("textarea").value
+      };
 
-  
-  const photoEntries = [...document.querySelectorAll(".photo-entry")];
+    }).filter(s => s.title);
 
-  const uploadedPhotos = [];
-
-  for (let i = 0; i < photoEntries.length; i++) {
-
-    const entry = photoEntries[i];
-
-    const base64 = entry.querySelector(".photo-data").value;
-    const caption = entry.querySelector("input[type=text]").value;
-
-    if (!base64) continue;
-
-   const storageReference = window.firebaseStorageRef(window.storage, `photos/photo_${Date.now()}_${i}.jpg`);
-
-   await window.firebaseUploadString(storageReference, base64, 'data_url');
-   const downloadURL = await window.firebaseGetDownloadURL(storageReference);
-    uploadedPhotos.push({
-      url: downloadURL,
-      caption
-    });
-  }
-
-  siteData.photos = uploadedPhotos;
-
-  await window.firebaseSet(window.firebaseRef(window.db, "birthdaySite"), siteData);
-
-  alert("✅ Firebase এ save হয়েছে!");
+  siteData.photos = [...document.querySelectorAll(".photo-entry")]
+    .map(entry => ({
+      url: entry.querySelector(".photo-data").value,
+      caption: entry.querySelector("input[type=text]").value
+    }))
+    .filter(p => p.url);
+    localStorage.setItem("bdMeta", JSON.stringify({
+  name: siteData.name,
+  sub: siteData.sub,
+  sign: siteData.sign,
+  wish: siteData.wish,
+  musicUrl: siteData.musicUrl,
+  musicLabel: siteData.musicLabel,
+  stories: siteData.stories
+}));
+  renderSite();
 
   closeAdmin();
-  renderSite();
-}
 
+  alert("✅ Saved");
+}
 const ws = document.getElementById("wish");
 ["❤️","💕","💗","💖","🌹","✨"].forEach((em,i) => {
   const h=document.createElement("span"); h.className="float-heart"; h.textContent=em;
@@ -603,103 +607,23 @@ const ws = document.getElementById("wish");
   h.style.animationDelay=(Math.random()*4)+"s"; h.style.animationDuration=(3+Math.random()*3)+"s";
   ws.appendChild(h);
 });
-</script>
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getDatabase,
-  ref,
-  set,
-  get
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-import {
-  getStorage,
-  ref as storageRef,
-  uploadString,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBc4bl4nbdCXjY6KgWFDQQ6ttVhhqwIhXw",
-  authDomain: "birthday-site-79b97.firebaseapp.com",
-  databaseURL: "https://birthday-site-79b97-default-rtdb.firebaseio.com",
-  projectId: "birthday-site-79b97",
- storageBucket: "birthday-site-79b97.appspot.com",
-  messagingSenderId: "1074285829572",
-  appId: "1:1074285829572:web:e4d4018dd1acc839399891",
-  measurementId: "G-G1YM5W82YY"
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-const db = getDatabase(app);
-const storage = getStorage(app);
-window.db = db;
-window.storage = storage;
-window.firebaseRef = ref;
-window.firebaseSet = set;
-window.firebaseStorageRef = storageRef;
-window.firebaseUploadString = uploadString;
-window.firebaseGetDownloadURL = getDownloadURL;
-
-
-   async function loadFirebaseData() {
-
+window.onload = async () => {
   try {
+    await idbOpen();
 
-    const snapshot = await get(ref(db, "birthdaySite"));
+    const savedPhotos = await idbGetAll();
 
-    if (snapshot.exists()) {
-
-      siteData = snapshot.val();
-
-    }
-
-    renderSite();
-
-  } catch (err) {
-
-    console.error(err);
-
-    renderSite();
-  }
+   if (savedPhotos.length) {
+  siteData.photos = [...siteData.photos, ...savedPhotos];
 }
 
-window.addEventListener("load", () => {
-
-  loadFirebaseData();
-
-});
-
-window.saveToFirebase = async function(data) {
-
-  await set(ref(db, "birthdaySite"), data);
-
-  console.log("✅ Saved");
-
-};
-
-
-window.loadFirebase = async function() {
-
-  const snapshot = await get(ref(db, "birthdaySite"));
-
-  if (snapshot.exists()) {
-
-    return snapshot.val();
-
+  } catch(e) {
+    console.log(e);
   }
 
-  return null;
+  renderSite();
 };
-
-console.log("🔥 Firebase Connected");
-
 </script>
+
 </body>
 </html>
