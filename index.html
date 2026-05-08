@@ -576,13 +576,10 @@ async function applyAdmin() {
 
     if (!base64) continue;
 
-    
-   const storageReference = storageRef(storage, `photos/photo_${Date.now()}_${i}.jpg`);
+   const storageReference = window.firebaseStorageRef(window.storage, `photos/photo_${Date.now()}_${i}.jpg`);
 
-    await uploadString(storageReference, base64, 'data_url');
-
-    const downloadURL = await getDownloadURL(storageReference);
-
+   await window.firebaseUploadString(storageReference, base64, 'data_url');
+   const downloadURL = await window.firebaseGetDownloadURL(storageReference);
     uploadedPhotos.push({
       url: downloadURL,
       caption
@@ -591,8 +588,7 @@ async function applyAdmin() {
 
   siteData.photos = uploadedPhotos;
 
-  
-  await set(ref(db, "birthdaySite"), siteData);
+  await window.firebaseSet(window.firebaseRef(window.db, "birthdaySite"), siteData);
 
   alert("✅ Firebase এ save হয়েছে!");
 
@@ -632,7 +628,7 @@ const firebaseConfig = {
   authDomain: "birthday-site-79b97.firebaseapp.com",
   databaseURL: "https://birthday-site-79b97-default-rtdb.firebaseio.com",
   projectId: "birthday-site-79b97",
-  storageBucket: "birthday-site-79b97.firebasestorage.app",
+ storageBucket: "birthday-site-79b97.appspot.com",
   messagingSenderId: "1074285829572",
   appId: "1:1074285829572:web:e4d4018dd1acc839399891",
   measurementId: "G-G1YM5W82YY"
@@ -643,6 +639,13 @@ const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 const storage = getStorage(app);
+window.db = db;
+window.storage = storage;
+window.firebaseRef = ref;
+window.firebaseSet = set;
+window.firebaseStorageRef = storageRef;
+window.firebaseUploadString = uploadString;
+window.firebaseGetDownloadURL = getDownloadURL;
 
 
    async function loadFirebaseData() {
