@@ -316,15 +316,6 @@ try {
   if (m) { const parsed = JSON.parse(m); Object.assign(siteData, parsed); siteData.photos = []; }
 } catch(e) {}
 
-
-idbOpen()
-  .then(() => idbGetAll())
-  .then(rows => {
-    siteData.photos = rows.map(r => ({ url: r.url, caption: r.caption }));
-    renderSite();
-  })
-  .catch(() => renderSite());
-
 const curEl = document.getElementById("cursor");
 document.addEventListener("mousemove", e => { curEl.style.left = (e.clientX-10)+"px"; curEl.style.top = (e.clientY-10)+"px"; });
 document.addEventListener("mousedown", () => curEl.classList.add("active"));
@@ -522,9 +513,9 @@ function addPhotoEntry(p={}) {
     <input type="hidden" class="photo-data" value="${p.url||""}">`;
   pa.appendChild(div);
 }
+async function applyAdmin() {
 
-function applyAdmin() {
-  siteData.name       = document.getElementById("adm-name").value.trim() || "HAPPY  BIRTHDAY Bow";
+  siteData.name       = document.getElementById("adm-name").value.trim() || "HAPPY BIRTHDAY Bow";
   siteData.sign       = document.getElementById("adm-sign").value.trim();
   siteData.sub        = document.getElementById("adm-sub").value.trim();
   siteData.wish       = document.getElementById("adm-wish").value.trim();
@@ -532,22 +523,53 @@ function applyAdmin() {
   siteData.musicLabel = document.getElementById("adm-music-label").value.trim() || "♪ আমাদের গান";
 
   siteData.stories = [...document.getElementById("story-admin").querySelectorAll(".story-entry")].map(el => {
-    const ins=el.querySelectorAll("input");
-    return { date:ins[0].value, icon:ins[1].value, title:ins[2].value, desc:el.querySelector("textarea").value };
+    const ins = el.querySelectorAll("input");
+
+    return {
+      date: ins[0].value,
+      icon: ins[1].value,
+      title: ins[2].value,
+      desc: el.querySelector("textarea").value
+    };
+
   }).filter(s => s.title);
 
-  siteData.photos = [...document.getElementById("photos-admin").querySelectorAll(".photo-entry")].map(el => ({
-    url:     el.querySelector(".photo-data").value,
-    caption: el.querySelector("input[type=text]").value
-  })).filter(p => p.url);
+  
+  const photoEntries = [...document.querySelectorAll(".photo-entry")];
+
+  const uploadedPhotos = [];
+
+  for (let i = 0; i < photoEntries.length; i++) {
+
+    const entry = photoEntries[i];
+
+    const base64 = entry.querySelector(".photo-data").value;
+    const caption = entry.querySelector("input[type=text]").value;
+
+    if (!base64) continue;
+
+    
+   const storageReference = storageRef(storage, `photos/photo_${Date.now()}_${i}.jpg`);
+
+    await uploadString(storageReference, base64, 'data_url');
+
+    const downloadURL = await getDownloadURL(storageReference);
+
+    uploadedPhotos.push({
+      url: downloadURL,
+      caption
+    });
+  }
+
+  siteData.photos = uploadedPhotos;
 
   
-  try { localStorage.setItem("bdMeta", JSON.stringify({...siteData, photos:[]})); } catch(e){}
+  await set(ref(db, "birthdaySite"), siteData);
 
-  // Save photos to IndexedDB (no size limit)
-  idbSaveAll(siteData.photos)
-    .then(() => { closeAdmin(); renderSite(); })
-    .catch(() => { closeAdmin(); renderSite(); });
+  alert("✅ Firebase এ save হয়েছে!");
+
+  closeAdmin();
+  renderSite();
 }
 
 const ws = document.getElementById("wish");
@@ -559,25 +581,94 @@ const ws = document.getElementById("wish");
 });
 </script>
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyBc4bl4nbdCXjY6KgWFDQQ6ttVhhqwIhXw",
-    authDomain: "birthday-site-79b97.firebaseapp.com",
-    databaseURL: "https://birthday-site-79b97-default-rtdb.firebaseio.com",
-    projectId: "birthday-site-79b97",
-    storageBucket: "birthday-site-79b97.firebasestorage.app",
-    messagingSenderId: "1074285829572",
-    appId: "1:1074285829572:web:e4d4018dd1acc839399891",
-    measurementId: "G-G1YM5W82YY"
-  };
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+import {
+  getDatabase,
+  ref,
+  set,
+  get
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-  console.log("🔥 Firebase Connected");
+import {
+  getStorage,
+  ref as storageRef,
+  uploadString,
+  getDownloadURL
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBc4bl4nbdCXjY6KgWFDQQ6ttVhhqwIhXw",
+  authDomain: "birthday-site-79b97.firebaseapp.com",
+  databaseURL: "https://birthday-site-79b97-default-rtdb.firebaseio.com",
+  projectId: "birthday-site-79b97",
+  storageBucket: "birthday-site-79b97.firebasestorage.app",
+  messagingSenderId: "1074285829572",
+  appId: "1:1074285829572:web:e4d4018dd1acc839399891",
+  measurementId: "G-G1YM5W82YY"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase(app);
+const storage = getStorage(app);
+
+
+   async function loadFirebaseData() {
+
+  try {
+
+    const snapshot = await get(ref(db, "birthdaySite"));
+
+    if (snapshot.exists()) {
+
+      siteData = snapshot.val();
+
+    }
+
+    renderSite();
+
+  } catch (err) {
+
+    console.error(err);
+
+    renderSite();
+  }
+}
+
+window.addEventListener("load", () => {
+
+  loadFirebaseData();
+
+});
+
+window.saveToFirebase = async function(data) {
+
+  await set(ref(db, "birthdaySite"), data);
+
+  console.log("✅ Saved");
+
+};
+
+
+window.loadFirebase = async function() {
+
+  const snapshot = await get(ref(db, "birthdaySite"));
+
+  if (snapshot.exists()) {
+
+    return snapshot.val();
+
+  }
+
+  return null;
+};
+
+console.log("🔥 Firebase Connected");
+
 </script>
-
 </body>
 </html>
