@@ -275,7 +275,7 @@ let siteData = {
   sub:  "আমার জীবনের সবচেয়ে সুন্দর মানুষটা 💕",
   sign: " Tomar Bor TURAB ❤️",
   wish: "তুমি আমার জীবনে এসেছো একটা রঙিন স্বপ্নের মতো। তোমার হাসি দেখলে মনে হয় পৃথিবীটা সত্যিই সুন্দর। তোমাকে ভালোবাসি — প্রতিটি নিঃশ্বাসে, প্রতিটি মুহূর্তে।\n\nজন্মদিনে তোমার জন্য শুধু একটাই চাওয়া — তুমি সুখে থাকো, হাসো, আর আমার পাশে থাকো।",
-  musicUrl: "", musicLabel: "♪ আমাদের গান",
+  musicUrl: "https://raw.github.com/turab-e1414/birthday-site/main/ikoliks_aj-acoustic-spring-mothers-day-music-320427.mp3", musicLabel: "♪ আমাদের গান",
   stories: [
     { date:"09 জানুয়ারি 2020", icon:"💘", title:"প্রথম ভালোলাগা",  desc:"সেই দিনটা মনে আছে? যেদিন প্রথমবার মনে হয়েছিল তুমি আলাদা কেউ..." },
     { date:"কতবার কথা বলার চেষ্টা...",      icon:"💬", title:"ভয়ে আমি ও কথা বলি নাই তুমি ও বলো না 🙂 ",    desc:"সেই দিন গুলোতে আবার ফিরে যেতে চাই বউ...🥺..." },
@@ -563,6 +563,8 @@ function applyAdmin() {
   siteData.sign = document.getElementById("adm-sign").value.trim();
   siteData.sub = document.getElementById("adm-sub").value.trim();
   siteData.wish = document.getElementById("adm-wish").value.trim();
+  siteData.musicUrl = document.getElementById("adm-music").value.trim();
+  siteData.musicLabel = document.getElementById("adm-music-label").value.trim();
 
   siteData.stories = [...document.getElementById("story-admin")
     .querySelectorAll(".story-entry")]
